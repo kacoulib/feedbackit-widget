@@ -1,1 +1,2 @@
 - [ ] Initial skeleton of React, Vanilla and WordPress packages.
+- [x] Add multilingual detection and configuration (English/French).

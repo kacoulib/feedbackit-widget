@@ -7,7 +7,28 @@ export interface FeedbackItWidgetProps {
   pollAlerts?: boolean;
 }
 
-export const FeedbackItWidget: React.FC<FeedbackItWidgetProps> = ({ projectId, lang = 'en', showFeedbackButton = true, pollAlerts = true }) => {
+const translations = {
+  en: {
+    feedbackButton: 'Give feedback',
+    placeholder: 'Your feedback',
+    send: 'Send'
+  },
+  fr: {
+    feedbackButton: 'Donner un avis',
+    placeholder: 'Votre avis',
+    send: 'Envoyer'
+  }
+};
+
+function detectLang(prop?: string): keyof typeof translations {
+  if (prop && translations[prop as keyof typeof translations]) return prop as keyof typeof translations;
+  if (typeof navigator !== 'undefined' && navigator.language.startsWith('fr')) return 'fr';
+  return 'en';
+}
+
+export const FeedbackItWidget: React.FC<FeedbackItWidgetProps> = ({ projectId, lang, showFeedbackButton = true, pollAlerts = true }) => {
+  const locale = detectLang(lang);
+  const t = translations[locale];
   const [alert, setAlert] = useState<any>(null);
   const [showForm, setShowForm] = useState(false);
   useEffect(() => {
@@ -23,13 +44,13 @@ export const FeedbackItWidget: React.FC<FeedbackItWidgetProps> = ({ projectId, l
         <div className={`fi-alert fi-${alert.type}`}>{alert.message}</div>
       )}
       {showFeedbackButton && (
-        <button className="fi-btn" onClick={() => setShowForm(true)}>Donner un avis</button>
+        <button className="fi-btn" onClick={() => setShowForm(true)}>{t.feedbackButton}</button>
       )}
       {showForm && (
         <form onSubmit={e => { e.preventDefault(); setShowForm(false); }}>
-          <textarea name="message" placeholder="Votre avis" />
+          <textarea name="message" placeholder={t.placeholder} />
           <input type="file" name="file" />
-          <button type="submit">Envoyer</button>
+          <button type="submit">{t.send}</button>
         </form>
       )}
     </div>
