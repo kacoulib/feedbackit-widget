@@ -1,0 +1,14 @@
+{
+  "name": "feedbackit-widget-monorepo",
+  "private": true,
+  "version": "0.1.0",
+  "workspaces": [
+    "packages/react",
+    "packages/vanilla",
+    "packages/wordpress"
+  ],
+  "scripts": {
+    "build": "pnpm -r run build",
+    "test": "pnpm -r run test"
+  }
+}
