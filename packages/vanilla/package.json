@@ -1,0 +1,9 @@
+{
+  "name": "@feedbackit/widget-html",
+  "version": "0.1.0",
+  "main": "dist/widget.umd.js",
+  "scripts": {
+    "build": "vite build",
+    "test": "echo 'no tests'"
+  }
+}
