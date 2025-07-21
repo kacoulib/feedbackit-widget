@@ -7,3 +7,6 @@ This repository hosts the source code for multiple distribution formats of the F
 - **wordpress** – WordPress plugin to easily embed the widget.
 
 Use `pnpm` for dependency management and running scripts.
+
+All packages support English and French out of the box. The widget detects the
+browser language by default and can be configured explicitly when embedding.

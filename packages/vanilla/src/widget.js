@@ -1,6 +1,18 @@
 (function (global) {
+  var translations = {
+    en: { feedbackButton: 'Give feedback' },
+    fr: { feedbackButton: 'Donner un avis' }
+  };
+
+  function detectLang(lang) {
+    if (lang && translations[lang]) return lang;
+    if (navigator.language && navigator.language.indexOf('fr') === 0) return 'fr';
+    return 'en';
+  }
+
   function init(options) {
     var projectId = options.projectId;
+    var lang = detectLang(options.lang);
     fetch('https://api.feedbackit.io/alerts?projectId=' + projectId)
       .then(function (r) { return r.json(); })
       .then(function (a) {
@@ -12,7 +24,7 @@
         }
       });
     var btn = document.createElement('button');
-    btn.textContent = 'Donner un avis';
+    btn.textContent = translations[lang].feedbackButton;
     btn.onclick = function () {
       alert('TODO: open feedback form');
     };
