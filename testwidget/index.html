@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div id="root"></div>
+  <script type="module" defer>
+    const root = document.getElementById("root");
+    const widget = document.createElement("div");
+    fetch("http://localhost:3000/api/widget", {
+      headers: {
+        "x-api-key": "abcde"
+      }
+    }).then(res => res.json()).then(data => {
+    widget.innerHTML = `
+      <div class="feedback-widget">
+        <h1>Feedback Widget</h1>
+        <p>${data.canUseWidget}</p>
+        <p>${data.primaryColor}</p>
+        <p>${data.secondaryColor}</p>
+        <p>${data.image}</p>
+      </div>
+    `;
+    root.appendChild(widget);
+    });
+
+  </script>
+</body>
+</html>

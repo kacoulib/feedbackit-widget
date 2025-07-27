@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FeedbackIt Chat Widget</title>
+    <style>
+        #feedbackit-widget {
+            --primary-color: #12355b;
+            --text-color: #ffffff;
+        }
+    </style>
+</head>
+<body>
+    <h1>Website Content</h1>
+    <p>This is a demo page showing the FeedbackIt chat widget in action.</p>
+    <p>Click the blue button in the bottom-right corner to open the chat widget.</p>
+    
+    <script src="chatWidget.js"></script>
+    <script>
+      document.addEventListener('DOMContentLoaded', function() {
+          FeedbackIt.init({
+              projectId: 'your-project-id',
+              primaryColor: '#0061d5',
+              textColor: '#000',
+              // ... other configuration options
+          });
+      });
+  </script>
+</body>
+</html>
