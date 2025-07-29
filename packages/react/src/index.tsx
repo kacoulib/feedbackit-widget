@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from 'react';
+import { createRoot } from 'react-dom/client';
+import App from './App';
 
 export interface FeedbackItWidgetProps {
   projectId: string;
@@ -56,5 +58,9 @@ export const FeedbackItWidget: React.FC<FeedbackItWidgetProps> = ({ projectId, l
     </div>
   );
 };
+
+const container = document.getElementById('root')!;
+const root = createRoot(container);
+root.render(<App />);
 
 export default FeedbackItWidget;
